@@ -1,6 +1,6 @@
 # dotfiles
 
-## Easy Install, On Linux
+## Install
 
 via wget:
 ```bash
