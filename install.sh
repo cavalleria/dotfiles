@@ -31,8 +31,12 @@ git_clone()
     if [ ! -d ~/.my_config ]; then
         git clone git@github.com:cavalleria/dotfiles.git ~/.my_config
         git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.my_config/oh-my-zsh
+
+        # plugins
         git clone https://github.com/zsh-users/zsh-autosuggestions ~/.my_config/oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        wget https://raw.githubusercontent.com/codepowerme/incr.zsh/master/incr.plugin.zsh -P ~/.my_config/oh-my-zsh/custom/plugins/incr
+
     fi
     echo "-- git clone OK"
 }
@@ -57,11 +61,7 @@ link_file_list()
     link_file  ~/.my_config/home/.pathrc ~/.pathrc
     echo "-- link files OK"
 }
-# pathrc
-remind_pathrc()
-{
-    echo "Please create ~/.pathrc and put PATH related stuffs inside :-)"
-}
+
 
 hello()
 {
@@ -78,7 +78,6 @@ main()
     git_clone
     link_directory_list
     link_file_list
-    remind_pathrc
 }
 
 main "$@"
