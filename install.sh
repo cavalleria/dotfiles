@@ -7,6 +7,7 @@ git_clone()
 {
     if [ ! -d ~/.my_config ]; then
         git clone git@github.com:cavalleria/dotfiles.git ~/.my_config
+        git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.my_config/oh-my-zsh
     fi
     echo "-- git clone OK"
 }
@@ -26,6 +27,7 @@ link_file()
 link_file_list()
 {
     link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
+    link_file  ~/.my_config/home/.vimrc ~/.vimrc
     link_file  ~/.my_config/home/.zshrc ~/.zshrc
     echo "-- link files OK"
 }
@@ -45,9 +47,8 @@ link_directory()
 link_directory_list()
 {
     link_directory ~/.my_config/vim ~/.vim_runtime
-    sh ~/.vim_runtime/install_awesome_vimrc.sh
 
-    link_directory ~/.my_config/zsh ~/.oh-my-zsh
+    link_directory ~/.my_config/oh-my-zsh ~/.oh-my-zsh
 
     echo "-- link directories OK"
 }
