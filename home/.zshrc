@@ -73,8 +73,11 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
+    extract
+    z
     zsh-autosuggestions
     zsh-syntax-highlighting
+    incr
 )
 
 source $ZSH/oh-my-zsh.sh
