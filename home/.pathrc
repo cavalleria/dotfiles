@@ -1,0 +1,55 @@
+# apapted from https://github.com/zchrissirhcz/dotfiles/blob/master/home/.pathrc_example
+
+#----------
+# => Python
+#----------
+
+# Conda
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/yaobin.li/soft/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/yaobin.li/soft/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/yaobin.li/soft/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/yaobin.li/soft/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+#----------
+# => PATH related
+#----------
+
+# This environment variable `PATH` is for finding executable paths
+#export PATH=/home/zz/soft/protobuf-3.6.1/bin:$PATH
+#export ANDROID_SDK=/home/zz/soft/android-sdk-linux
+#export ANDROID_NDK=/home/zz/soft/android-ndk-r17b
+#export ANDROID_NDK_ROOT=$ANDROID_NDK
+#export SNPE_ROOT=$HOME/work/snpe-1.20.2
+#export SNPE_ROOT=$HOME/work/snpe-1.23.1.245
+
+
+#CMAKE=/usr/local/cmake-3.18.0/bin
+
+#CUDA_BINDIR=/usr/local/cuda-10.0/bin
+#CUDA_LIBDIR=/usr/local/cuda-10.0/lib64
+
+#OPENCV_LIBDIR=/usr/local/opencv-3.4.5/lib
+
+#export PATH=$CMAKE:$ANDROID_SDK/platform-tools:$PATH
+
+
+#----------
+# => LD_LIBRARY_PATH, LD_PRELOAD
+#----------
+
+# These env vars are for customized lib finding path
+#export LD_LIBRARY_PATH=/home/zz/soft/protobuf-3.6.x/lib:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$CUDA_LIBDIR:$OPENCV_LIBDIR:$LD_LIBRARY_PATH
+
+
