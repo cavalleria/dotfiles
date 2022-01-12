@@ -3,15 +3,17 @@
 
 set -e
 
-git_clone()
+# functions
+link_directory()
 {
-    if [ ! -d ~/.my_config ]; then
-        git clone git@github.com:cavalleria/dotfiles.git ~/.my_config
-        git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.my_config/oh-my-zsh
+    SRC_DIR=$1
+    DST_DIR=$2
+    if [ ! -d $DST_DIR ]; then
+        ln -s $SRC_DIR $DST_DIR
+    else
+        echo $DST_DIR "already exist, skip linking"
     fi
-    echo "-- git clone OK"
 }
-
 link_file()
 {
     SRC_FILE=$1
@@ -23,25 +25,18 @@ link_file()
     fi
 }
 
-# files
-link_file_list()
+# download
+git_clone()
 {
-    link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
-    link_file  ~/.my_config/home/.vimrc ~/.vimrc
-    link_file  ~/.my_config/home/.zshrc ~/.zshrc
-    echo "-- link files OK"
+    if [ ! -d ~/.my_config ]; then
+        git clone git@github.com:cavalleria/dotfiles.git ~/.my_config
+        git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.my_config/oh-my-zsh
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.my_config/oh-my-zsh/custom/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    fi
+    echo "-- git clone OK"
 }
 
-link_directory()
-{
-    SRC_DIR=$1
-    DST_DIR=$2
-    if [ ! -d $DST_DIR ]; then
-        ln -s $SRC_DIR $DST_DIR
-    else
-        echo $DST_DIR "already exist, skip linking"
-    fi
-}
 
 # folders
 link_directory_list()
@@ -53,6 +48,14 @@ link_directory_list()
     echo "-- link directories OK"
 }
 
+# files
+link_file_list()
+{
+    link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
+    link_file  ~/.my_config/home/.vimrc ~/.vimrc
+    link_file  ~/.my_config/home/.zshrc ~/.zshrc
+    echo "-- link files OK"
+}
 # pathrc
 remind_pathrc()
 {
