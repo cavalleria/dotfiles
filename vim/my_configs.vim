@@ -1,3 +1,5 @@
+" adapted from https://github.com/zchrissirhcz/dotfiles/blob/master/dotvim/my_configs.vim
+
 set nu
 set foldcolumn=0
 
