@@ -5,7 +5,7 @@ set -e
 git_clone()
 {
     if [ ! -d ~/.my_config ]; then
-        git clone https://github.com/cavalleria/dotfiles.git ~/.my_config
+        git clone git@github.com:cavalleria/dotfiles.git ~/.my_config
     fi
     echo "-- git clone OK"
 }
