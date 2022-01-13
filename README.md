@@ -24,9 +24,15 @@ sudo apt-get install -y zsh
 sudo apt-get install -y git
 ```
 
+- Install ctags
+```bash
+sudo apt-get install ctags
+```
+
 - Change default shell
 ```bash
 sudo chsh -s /bin/zsh
 ```
+
 
 - Backup dotfiles, eg .vimrc, .zshrc, .gitconfig and so on.
