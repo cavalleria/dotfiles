@@ -247,7 +247,6 @@ Plug 'honza/vim-snippets'
 " quoting/parenthesizing made simple
 "Plug 'tpope/vim-surround'
 
-
 " List ends here. Remember to call :PlugInstall
 call plug#end()
 
