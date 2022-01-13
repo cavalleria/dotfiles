@@ -1,3 +1,5 @@
 [user]
 	name = cavalleria
 	email = 605370459@qq.com
+[oh-my-zsh]
+    hide-dirty = 1
