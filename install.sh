@@ -40,9 +40,6 @@ git_clone()
     if [ ! -d ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     fi
-    if [ ! -d ~/.my_config/oh-my-zsh/custom/plugins/incr ]; then
-        wget https://raw.githubusercontent.com/codepowerme/incr.zsh/master/incr.plugin.zsh -P ~/.my_config/oh-my-zsh/custom/plugins/incr
-    fi
     echo "-- git clone OK"
 }
 

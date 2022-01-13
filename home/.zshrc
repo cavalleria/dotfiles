@@ -77,7 +77,6 @@ plugins=(
     z
     zsh-autosuggestions
     zsh-syntax-highlighting
-    incr
 )
 
 source $ZSH/oh-my-zsh.sh
