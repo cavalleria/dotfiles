@@ -40,6 +40,9 @@ git_clone()
     if [ ! -d ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     fi
+    if [ ! -f ~/.my_config/oh-my-zsh/themes/headline.zsh-theme ]; then
+        wget https://raw.githubusercontent.com/cavalleria/headline/main/headline.zsh-theme -P ~/.my_config/oh-my-zsh/themes
+    fi
     echo "-- git clone OK"
 }
 

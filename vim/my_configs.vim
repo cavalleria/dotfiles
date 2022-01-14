@@ -12,7 +12,7 @@ let g:go_version_warning = 0
 
 set cursorline
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+hi CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=NONE guifg=NONE
 
 set gcr=a:block-blinkon0 "禁止光标闪烁。闪烁会干扰视线
 set nocp " nocompatible vim默认兼容vi的按键真是不舒服
