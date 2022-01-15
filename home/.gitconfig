@@ -6,8 +6,8 @@
     hide-dirty = 1
 
 [alias]
-    co = checkout
-    ci = commit
+    ck = checkout
+    cm = commit
     st = status
     br = branch
     df = diff
