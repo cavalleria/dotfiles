@@ -6,8 +6,16 @@
     hide-dirty = 1
 
 [alias]
-    ck = checkout
-    cm = commit
+    co = checkout
+    ci = commit
     st = status
     br = branch
     df = diff
+    lp = log --pretty = oneline
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[pull]
+    rebase = true
+
+[push]
+    default = simple
