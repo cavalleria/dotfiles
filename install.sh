@@ -29,7 +29,7 @@ link_file()
 git_clone()
 {
     if [ ! -d ~/.my_config ]; then
-        git clone git@github.com:cavalleria/dotfiles.git ~/.my_config
+        git clone https://github.com/cavalleria/dotfiles.git ~/.my_config
     fi
     if [ ! -d ~/.my_config/oh-my-zsh ]; then
         git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.my_config/oh-my-zsh
