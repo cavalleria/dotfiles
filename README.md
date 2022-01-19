@@ -24,7 +24,7 @@ sudo apt-get install -y zsh
 sudo apt-get install -y git
 ```
 
-- Install ctags
+- Install **ctags**
 ```bash
 sudo apt-get install ctags
 ```
@@ -34,5 +34,20 @@ sudo apt-get install ctags
 sudo chsh -s /bin/zsh
 ```
 
+- Install **Vim 8.2**
+```bash
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get update
+sudo apt-get install vim
+```
+
+- Install **gcc/g++ 8**
+```
+sudo apt-get install gcc-8
+sudo apt-get install g++-8
+cd /usr/bin
+sudo ln -sf gcc-8 gcc
+sudo ln -sf g++-8 g++
+```
 
 - Backup dotfiles, eg .vimrc, .zshrc, .gitconfig and so on.
