@@ -69,12 +69,18 @@ link_file_list()
     echo "-- link files OK"
 }
 
+install()
+{
+    # install vim plugins
+    vim +PlugInstall +qall > /dev/null
+    echo "-- install OK"
+}
 
 hello()
 {
     echo "------------------------------------------"
     echo ""
-    echo "      Welcome to use Cavall's Config"
+    echo "      Welcome to use Cavalleria's Config"
     echo ""
     echo "------------------------------------------"
 }
@@ -85,6 +91,7 @@ main()
     git_clone
     link_directory_list
     link_file_list
+    install
 }
 
 main "$@"
