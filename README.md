@@ -2,6 +2,8 @@
 
 ## Install
 
+Before installation, please backup your existing dotfiles first, eg .vimrc, .zshrc, .gitconfig and so on, and install pre-required package or software.
+
 via wget:
 ```bash
 sh -c "$(wget https://raw.githubusercontent.com/cavalleria/dotfiles/main/install.sh -O -)"
@@ -12,7 +14,7 @@ via curl:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/cavalleria/dotfiles/main/install.sh)"
 ```
 
-## Before install
+## Requirements
 
 - Install **Zsh**
 ```bash
@@ -58,4 +60,7 @@ sudo apt-get update
 sudo apt-get install cmake
 ```
 
-- Backup dotfiles, eg .vimrc, .zshrc, .gitconfig and so on.
+- Install **ack**
+```bash
+sudo apt-get install ack-grep
+```
