@@ -64,3 +64,15 @@ sudo apt-get install cmake
 ```bash
 sudo apt-get install ack-grep
 ```
+
+## Useful tools
+
+- **bat**: beautify cat command
+```bash
+sudo apt install bat
+```
+
+- **cheat**: create and view interactive cheatsheets on the command-line
+```bash
+pip install cheat
+```
