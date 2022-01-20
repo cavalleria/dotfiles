@@ -69,12 +69,12 @@ sudo apt-get install ack-grep
 
 - **bat**: beautify cat command
 ```bash
-sudo apt install bat
+dpkg -i bat_0.19.0_amd64.deb
 ```
 
 - **cheat**: create and view interactive cheatsheets on the command-line
 
-To install it, download the executable from the [releases][] page and place it on your `PATH`.
+To install it, download the executable from the [releases][Releases] page and place it on your `PATH`.
 
 
 [Releases]: https://github.com/cheat/cheat/releases
