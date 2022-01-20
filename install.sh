@@ -44,7 +44,7 @@ git_clone()
         wget https://raw.githubusercontent.com/cavalleria/headline/main/headline.zsh-theme -P ~/.my_config/oh-my-zsh/themes
     fi
     if [ ! -d ~/.my_config/home/.config/cheat ]; then
-        https://github.com/cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
+        git clone https://github.com/cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
     fi
     echo "-- git clone OK"
 }
