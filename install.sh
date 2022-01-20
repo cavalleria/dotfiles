@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #adapted from https://github.com/zchrissirhcz/dotfiles/blob/master/install.sh
 
 set -e
