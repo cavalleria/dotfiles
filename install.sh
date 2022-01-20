@@ -45,7 +45,7 @@ git_clone()
     fi
     if [ ! -d ~/.my_config/home/.config/cheat ]; then
         https://github.com/cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
-
+    fi
     echo "-- git clone OK"
 }
 
