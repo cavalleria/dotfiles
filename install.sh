@@ -59,6 +59,7 @@ link_directory_list()
 
     if [ ! -d ~/.config ]; then
         mkdir -p ~/.config
+    fi
     link_directory ~/.my_config/.config/cheat ~/.config/cheat
     echo "-- link directories OK"
 }
