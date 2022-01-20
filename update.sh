@@ -6,7 +6,7 @@ update_repo()
 {
     pushd ~/.my_config && git pull && popd
     pushd ~/.my_config/oh-my-zsh && git pull && popd
-    pushd ~/.my_config/home/.config/cheat && git pull && git submodule update && popd
+    pushd ~/.my_config/home/.config/cheat && git pull && git submodule update --init && popd
     echo "-- update OK"
 }
 
