@@ -45,6 +45,9 @@ git_clone()
     fi
     if [ ! -d ~/.my_config/home/.config/cheat ]; then
         git clone https://github.com/cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
+        pushd ~/.my_config/home/.config/cheat
+        git submodule update --init
+        popd
     fi
     echo "-- git clone OK"
 }
