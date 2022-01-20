@@ -44,7 +44,7 @@ git_clone()
         wget https://raw.githubusercontent.com/cavalleria/headline/main/headline.zsh-theme -P ~/.my_config/oh-my-zsh/themes
     fi
     if [ ! -d ~/.my_config/home/.config/cheat ]; then
-        git clone https://github.com/cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
+        git clone git@github.com:cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
         pushd ~/.my_config/home/.config/cheat
         git submodule update --init
         popd
