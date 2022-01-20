@@ -43,6 +43,7 @@ unset __conda_setup
 
 #export PATH=$CMAKE:$ANDROID_SDK/platform-tools:$PATH
 
+export PATH=$HOME/soft/cheat-linux-amd64:$PATH 
 
 #----------
 # => LD_LIBRARY_PATH, LD_PRELOAD

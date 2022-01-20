@@ -43,6 +43,9 @@ git_clone()
     if [ ! -f ~/.my_config/oh-my-zsh/themes/headline.zsh-theme ]; then
         wget https://raw.githubusercontent.com/cavalleria/headline/main/headline.zsh-theme -P ~/.my_config/oh-my-zsh/themes
     fi
+    if [ ! -d ~/.my_config/home/.config/cheat ]; then
+        https://github.com/cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
+
     echo "-- git clone OK"
 }
 
@@ -54,6 +57,9 @@ link_directory_list()
 
     link_directory ~/.my_config/oh-my-zsh ~/.oh-my-zsh
 
+    if [ ! -d ~/.config ]; then
+        mkdir -p ~/.config
+    link_directory ~/.my_config/.config/cheat ~/.config/cheat
     echo "-- link directories OK"
 }
 
