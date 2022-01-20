@@ -73,6 +73,8 @@ sudo apt install bat
 ```
 
 - **cheat**: create and view interactive cheatsheets on the command-line
-```bash
-pip install cheat
-```
+
+To install it, download the executable from the [releases][] page and place it on your `PATH`.
+
+
+[Releases]: https://github.com/cheat/cheat/releases
