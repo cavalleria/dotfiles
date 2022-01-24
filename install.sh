@@ -76,6 +76,7 @@ link_file_list()
     link_file  ~/.my_config/home/.ycm_extra_conf.py ~/.ycm_extra_conf.py
     link_file  ~/.my_config/home/.zshrc ~/.zshrc
     link_file  ~/.my_config/home/.pathrc ~/.pathrc
+    link_file  ~/.my_config/home/.condarc ~/.condarc
     echo "-- link files OK"
 }
 
