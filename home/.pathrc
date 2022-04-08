@@ -38,34 +38,34 @@ unset __conda_setup
 # => PATH related
 #----------
 
-# This environment variable `PATH` is for finding executable paths
-#export PATH=/home/zz/soft/protobuf-3.6.1/bin:$PATH
-#export ANDROID_SDK=/home/zz/soft/android-sdk-linux
-#export ANDROID_NDK=/home/zz/soft/android-ndk-r17b
-#export ANDROID_NDK_ROOT=$ANDROID_NDK
-#export SNPE_ROOT=$HOME/work/snpe-1.20.2
-#export SNPE_ROOT=$HOME/work/snpe-1.23.1.245
-
-
-#CMAKE=/usr/local/cmake-3.18.0/bin
-
-#CUDA_BINDIR=/usr/local/cuda-10.0/bin
-#CUDA_LIBDIR=/usr/local/cuda-10.0/lib64
-
-#OPENCV_LIBDIR=/usr/local/opencv-3.4.5/lib
-
 #export PATH=$CMAKE:$ANDROID_SDK/platform-tools:$PATH
 if [[ "$(uname)" == "Linux" ]]; then
-    export PATH=$HOME/soft/cheat-linux-amd64:$PATH 
+    CHEAT_PATH=$HOME/soft/cheat-linux-amd64 
+    export PATH=$CHEAT_PATH:$PATH
 elif [[ "$(uname)"=="Darwin" ]]; then
-    export PATH=$HOME/soft/cheat-darwin-amd64:$PATH
+    export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+    CHEAT_PATH=$HOME/soft/cheat-darwin-amd64
+    CMAKE_ROOT=$HOME/workspace/3rdlibs/cmake-3.19.1-Darwin-x86_64/CMake.app/Contents/bin
+    OPENCV=$HOME/soft/opencv4/opencv/build
+    ANDROID_HOME=$HOME/Library/Android/sdk
+    JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home
+    
+    export PATH=$CHEAT_PATH:$CMAKE_ROOT:$OPENCV/include:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+    export PATH=$JAVA_HOME:$PATH
 fi
+
+    
+
 #----------
 # => LD_LIBRARY_PATH, LD_PRELOAD
 #----------
 
 # These env vars are for customized lib finding path
-#export LD_LIBRARY_PATH=/home/zz/soft/protobuf-3.6.x/lib:$LD_LIBRARY_PATH
 #export LD_LIBRARY_PATH=$CUDA_LIBDIR:$OPENCV_LIBDIR:$LD_LIBRARY_PATH
+if [[ "$(uname)" == "Linux" ]]; then
+    :
+elif [[ "$(uname)" == "Darwin" ]]; then
+    export LD_LIBRARY_PATH=$OPENCV/lib:$LD_LIBRARY_PATH
+fi
 
 
