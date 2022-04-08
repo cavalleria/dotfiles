@@ -1,6 +1,14 @@
 [user]
 	name = cavalleria
 	email = 605370459@qq.com
+    #name = yaobin.li
+    #email = yaobin.li@rokid.com
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 
 [oh-my-zsh]
     hide-dirty = 1

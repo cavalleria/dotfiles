@@ -18,10 +18,10 @@ set gcr=a:block-blinkon0 "禁止光标闪烁。闪烁会干扰视线
 set nocp " nocompatible vim默认兼容vi的按键真是不舒服
 
 " enable mouse，可以在终端中使用鼠标
-" set mouse=a
+set mouse=a
 
 " enable Ctrl-C to copy
-" set mount=v
+set mount=v
 
 " enable Ctrl-C to copy selected content to system clipboard
 " set mouse=a使得鼠标选中区域内容时进入visual mode，visual mode下映射ctrl-c为复制到+寄存器
