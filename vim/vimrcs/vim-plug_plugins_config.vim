@@ -95,17 +95,9 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-" cmake syntax
-" Turn off since codedark color theme renders correctly
-"Plug 'pboettch/vim-cmake-syntax'
-
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 " Run :CtrlP for simple usage
 Plug 'ctrlpvim/ctrlp.vim'
-
-" for compatibility, install this plugin
-"Plug 'tpope/vim-markdown'
-Plug 'plasticboy/vim-markdown'
 
 " mark current line or a region of code as comment
 " Run :commentary to comment current line
@@ -142,17 +134,11 @@ Plug 'vim-scripts/mru.vim'
 " Open file under cursor when pressing gf
 Plug 'amix/open_file_under_cursor.vim'
 
-" Interpret a file by function and cache file automatically
-Plug 'MarcWeber/vim-addon-mw-utils'
-
 " Defines a new text object representing lines of code at the same indent level
 Plug 'michaeljsmith/vim-indent-object'
 
 " Multiple selections
 Plug 'terryma/vim-multiple-cursors'
-
-" Snippets files for various programming languages
-Plug 'honza/vim-snippets'
 
 
 " List ends here. Remember to call :PlugInstall
@@ -413,21 +399,6 @@ let g:ycm_filetype_blacklist = {'tagbar' : 1, 'nerdtree' : 1}
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => markdown
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" tpope/markdown config
-" markdown highlight code regions
-"let g:markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
-
-" plasticboy/vim-markdown config
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_toc_autofit = 1
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => rainbow
