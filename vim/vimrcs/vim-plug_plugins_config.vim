@@ -52,13 +52,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 
 " A git-lens like plugin
-" Plug 'APZelos/blamer.nvim'
-" Plug 'zivyangll/git-blame.vim'
-
-
-" a git plugin that show git diff markers in the sign column
-" Run :GitGutterEnable or :GitGutterToggle
-"Plug 'airblade/vim-gitgutter'
+Plug 'zivyangll/git-blame.vim'
 
 " vim-signify serves as an alternative to vim-gitgutter
 " Run :SignifyDiff for comparison in two columns
@@ -68,13 +62,8 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 
-" git blame plugin
-" Run :GitBlame for detail
-Plug 'zivyangll/git-blame.vim'
-
 " ale
 ""Plug 'w0rp/ale'  the original repo contains a large image. don't use it
-""Plug 'zchrissirhcz/ale' " use my fork. still slow
 Plug 'https://gitee.com/aczz/ale', {'branch': 'fallback'}
 
 " lightline and lightline support for ale
@@ -83,21 +72,15 @@ Plug 'itchyny/lightline.vim'
 
 " Parentheses related
 Plug 'jiangmiao/auto-pairs'
-"Plug 'tpope/vim-unimpaired'
 
 " Rainbow Parentheses Improved, slightly highlight for parenthese
 Plug 'luochen1990/rainbow'
 
-" provides insert mode auto-completion for quotes, parens, brackets, etc
-"Plug 'raimondi/delimitmate'
-
 "A collection of language packs for Vim.
-"Plug 'sheerun/vim-polyglot'
 Plug 'https://gitee.com/mirrors/Polyglot'
 
 " run :Goyo to into Distraction-free writing mode
 Plug 'junegunn/goyo.vim'
-Plug 'amix/vim-zenroom2'
 
 " YouCompleteMe, for path completion and function/variable/class completions
 " Note: this repo contains a bunch of submodules, time consuming when clone.
@@ -106,29 +89,15 @@ Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer'  }
 " color schemes
 Plug '~/.vim_runtime/sources_forked/peaksea'
 Plug 'morhetz/gruvbox'
-"Plug 'vim-scripts/mayansmoke'
 Plug 'tomasiser/vim-code-dark'
 
 " c++ related
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
-" gray out inactive code region
-"Plug 'mphe/grayout.vim'
 
 " cmake syntax
 " Turn off since codedark color theme renders correctly
 "Plug 'pboettch/vim-cmake-syntax'
-
-" opencl(.cl) highlight
-" Plug 'petRUShka/vim-opencl'
-
-" compute shader (.comp / .vert / .tesc / .tese / .geom / .frag) highlight
-" Plug 'tikhomirov/vim-glsl'
-
-" terminal helper
-" 由于污染了 Home 和 End 键， 先不用它了。
-"Plug 'skywind3000/vim-terminal-help'
-
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 " Run :CtrlP for simple usage
@@ -136,25 +105,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " for compatibility, install this plugin
 "Plug 'tpope/vim-markdown'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " mark current line or a region of code as comment
 " Run :commentary to comment current line
 " Use visual mode to select region, then use `gcc` to comment this region
 Plug 'tpope/vim-commentary'
-
-" LaTex
-"Plug 'lervag/vimtex'
-" Too slow to download. Use a mirror.
-" Plug 'https://gitee.com/zgpio/vimtex'
-
-"some utility functions, required by other plugins
-" Plug 'vim-scripts/tlib'
-
-" Vim plugin to sort python imports using isort
-" Run :Isort
-" Plug 'fisadev/vim-isort'
 
 " First in visual mode select code region (multiple lines)
 " Then run :Tab /= 
@@ -174,20 +130,8 @@ Plug 'godlygeek/tabular'
 " Brings physics-based smooth scrolling to the Vim world!
 Plug 'yuttie/comfortable-motion.vim'
 
-
 " Vim plugin for the Perl module / CLI script 'ack'
 Plug 'mileszs/ack.vim'
-
-
-"""""""""""""" 
-"language server protocol (lsp) related
-""""""""""""""""
-"Plug 'prabirshrestha/vim-lsp'
-"Plug 'mattn/vim-lsp-settings'
-
-" auto-completion
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " Quickly and easily switch between buffers
 Plug 'corntrace/bufexplorer'
@@ -201,9 +145,6 @@ Plug 'amix/open_file_under_cursor.vim'
 " Interpret a file by function and cache file automatically
 Plug 'MarcWeber/vim-addon-mw-utils'
 
-" Allows you to visually select increasingly larger regions
-Plug 'terryma/vim-expand-region'
-
 " Defines a new text object representing lines of code at the same indent level
 Plug 'michaeljsmith/vim-indent-object'
 
@@ -214,41 +155,10 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'honza/vim-snippets'
 
 
-
-" Unused plugins now
-"Plug 'rust-lang/rust.vim'
-"Plug 'scrooloose/snipmate-snippets'
-"Plug 'chr4/nginx.vim'
-"Plug 'kchmck/vim-coffee-script'
-"Plug 'altercation/vim-colors-solarized'
-"Plug 'nvie/vim-flake8'
-"Plug 'fatih/vim-go'
-"Plug 'garbas/vim-snipmate'
-
-"easily search for, substitute, and abbreviate multiple variants of a word
-"don't know how to use. ignore now
-"Plug 'tpope/tpope-vim-abolish'
-
-" syntax highlighting, indenting and autocompletion for the dynamic stylesheet language LESS
-"Plug 'groenewege/vim-less'
-
-"Plug 'tpope/vim-repeat'
-
-" A lightweight implementation of emacs's kill-ring for vim
-" Plug 'maxbrunsfeld/vim-yankstack'
-
-" Vim syntax highlighting for Pug (formerly Jade) templates.
-"Plug 'digitaltoad/vim-pug'
-
-" A collection of vim scripts for the mako templating engine
-" https://www.makotemplates.org/
-"Plug 'sophacles/vim-bundle-mako'
-
-" quoting/parenthesizing made simple
-"Plug 'tpope/vim-surround'
-
 " List ends here. Remember to call :PlugInstall
 call plug#end()
+
+
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -268,15 +178,6 @@ map <leader>f :MRU<CR>
 
 
 """"""""""""""""""""""""""""""
-" => YankStack
-""""""""""""""""""""""""""""""
-" let g:yankstack_yank_keys = ['y', 'd']
-
-" nmap <c-p> <Plug>yankstack_substitute_older_paste
-" nmap <c-n> <Plug>yankstack_substitute_newer_paste
-
-
-""""""""""""""""""""""""""""""
 " => CTRL-P
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
@@ -285,20 +186,6 @@ map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
-
-""""""""""""""""""""""""""""""
-" => ZenCoding
-""""""""""""""""""""""""""""""
-" Enable all functions in all modes
-let g:user_zen_mode='a'
-
-
-""""""""""""""""""""""""""""""
-" => snipMate (beside <TAB> support <CTRL-j>)
-""""""""""""""""""""""""""""""
-"ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-"snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -333,24 +220,13 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
 
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
-
-"let NERDTreeMapOpenExpl = ""
-"let NERDTreeMapUpdir = ""
-"let NERDTreeMapUpdirKeepOpen = "l"
-"let NERDTreeMapOpenSplit = ""
-"let NERDTreeOpenVSplit = ""
-"let NERDTreeMapActivateNode = "i"
-"let NERDTreeMapOpenInTab = "o"
-"let NERDTreeMapPreview = ""
-"let NERDTreeMapCloseDir = "n"
-"let NERDTreeMapChangeRoot = "y"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -369,7 +245,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ }
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -384,13 +259,6 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => surround.vim config
-" Annotate strings with gettext 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vmap Si S(i_<esc>f)
-"au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -575,7 +443,6 @@ let g:rainbow_conf = {
 \}
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => AutoPairs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -583,82 +450,6 @@ let g:AutoPairsMultilineClose=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Grayout
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nnoremap <F5> :GrayoutUpdate<CR>
-
-" " This can cause lag in more complex files.
-" autocmd CursorHold,CursorHoldI * if &ft == 'c' || &ft == 'cpp' || &ft == 'objc' | exec 'GrayoutUpdate' | endif
-
-" if has("mac") || has("macunix")
-"     let g:grayout_libclang_path="/Library/Developer/CommandLineTools/usr/lib"
-" endif
-
-" " Enable to print debug messages inside vim.
-" let g:grayout_debug = 0
-
-" " Enable to write debug messages to `grayout.log`.
-" let g:grayout_debug_logfile = 0
-
-
-
-"--------------------------------------------------------------
-" unused plugins configuration
-" some may be used in the future, some just deprecated
-"--------------------------------------------------------------
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-go
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_command = "goimports"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Git gutter (Git diff)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=1
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => LeTex
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:tex_flavor='latex'
-"let g:vimtex_viiew_method='zathurra'
-"let g:vimtex_quickfix_mode=0
-"set conceallevel=1
-"let g:tex_conceal='abdmg'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => git-blame
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => terminal helper
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" switch to same as VSCode
-"let g:terminal_key = '<C-j>'
-
-
-" LSP configurations
-" Note: there are still many knowns to know. Try them!
-" https://jonasdevlieghere.com/vim-lsp-clangd/
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'ajh17/vimcompletesme'
-
-
-if executable('clangd')
-    augroup lsp_clangd
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
-                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-                    \ })
-        autocmd FileType c setlocal omnifunc=lsp#complete
-        autocmd FileType cpp setlocal omnifunc=lsp#complete
-        autocmd FileType objc setlocal omnifunc=lsp#complete
-        autocmd FileType objcpp setlocal omnifunc=lsp#complete
-    augroup end
-endif
