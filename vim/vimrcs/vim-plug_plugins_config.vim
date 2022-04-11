@@ -140,6 +140,14 @@ Plug 'michaeljsmith/vim-indent-object'
 " Multiple selections
 Plug 'terryma/vim-multiple-cursors'
 
+" Markdown preview
+Plug 'preservim/vim-markdown'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+" Provides a start screen 
+Plug 'mhinz/vim-startify'
+
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
@@ -366,8 +374,9 @@ let g:ale_cpp_cppcheck_options = ''
 let g:ale_c_parse_compile_commands = 1
 
 " from daquexian/dot_files
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '__'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=White
 
