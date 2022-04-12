@@ -133,9 +133,6 @@ Plug 'vim-airline/vim-airline-themes'
 " ale
 Plug 'dense-analysis/ale'
 
-" auto-format
-Plug 'Chiel92/vim-autoformat'
-
 " fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly.
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
@@ -145,25 +142,28 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 call plug#end()
 
 
-""""""""""""""""""""""""""""""
-" => Auto-format
-""""""""""""""""""""""""""""""
-let g:formatters_python = ['yapf']
-let g:formatter_yapf_style = 'yapf'
-let g:autoformat_verbosemode=0
-au BufWrite * :Autoformat
-
 
 """"""""""""""""""""""""""""""
 " => Ale (syntax checker and linter)
 """"""""""""""""""""""""""""""
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '__'
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:airline#extensions#ale#enable = 1
+let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
+let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \  'python': [
+                \    'isort',
+                \    'ale#fixers#generic_python#BreakUpLongLines',
+                \    'yapf'
+                \   ]
+                \}
 
 
 """"""""""""""""""""""""""""""
