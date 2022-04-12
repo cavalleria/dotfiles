@@ -32,9 +32,6 @@ Plug '~/.vim_runtime/sources_forked/vim-peepopen'
 " a universal set of defaults that (hopefully) everyone can agree on.
 Plug 'tpope/vim-sensible'
 
-" editorconfig
-Plug 'editorconfig/editorconfig-vim'
-
 " file explorer by nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -120,8 +117,6 @@ Plug 'terryma/vim-multiple-cursors'
 
 " Markdown preview
 Plug 'preservim/vim-markdown'
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Provides a start screen
 Plug 'mhinz/vim-startify'
@@ -150,17 +145,17 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enable = 1
 let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
 let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
-let g:ale_fix_on_save = 1
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
             \  'python': [
                 \    'isort',
-                \    'ale#fixers#generic_python#BreakUpLongLines',
                 \    'yapf'
                 \   ]
                 \}
@@ -226,6 +221,7 @@ noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
+
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
@@ -258,6 +254,12 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
             \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
 
+" NERDTree: square brackets around icon
+autocmd VimEnter * source ~/.vimrc
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
 let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -265,6 +267,15 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-devicons
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_startify = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_startify = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -298,7 +309,6 @@ let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Goyo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -306,7 +316,6 @@ let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
-
 autocmd! User goyo.vim echom 'Goyo is now loaded!'
 
 
@@ -342,7 +351,6 @@ nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 " => rainbow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rainbow_active = 1
-
 " rainbow mess up cmake syntax. turn it off
 " https://github.com/luochen1990/rainbow/issues/77
 let g:rainbow_conf = {
