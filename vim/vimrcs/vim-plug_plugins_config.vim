@@ -54,9 +54,6 @@ endif
 " Parentheses related
 Plug 'jiangmiao/auto-pairs'
 
-" Rainbow Parentheses Improved, slightly highlight for parenthese
-Plug 'luochen1990/rainbow'
-
 "A collection of language packs for Vim.
 Plug 'https://gitee.com/mirrors/Polyglot'
 
@@ -145,18 +142,19 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
-let g:ale_lint_on_text_changed = 'always'
+let g:ale_linters = {'python': ['flake8']}
+let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enable = 1
-let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
             \  'python': [
                 \    'isort',
-                \    'yapf'
+                \    'yapf',
                 \   ]
                 \}
 
@@ -167,7 +165,8 @@ let g:ale_fixers = {
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
-
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_powerline_fonts = 1
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -254,16 +253,13 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
             \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
 
-" NERDTree: square brackets around icon
-autocmd VimEnter * source ~/.vimrc
-if exists('g:loaded_webdevicons')
-  call webdevicons#refresh()
-endif
+" " NERDTree: square brackets around icon
+" autocmd VimEnter * source ~/.vimrc
 
 let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=45
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
@@ -276,6 +272,7 @@ let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_startify = 1
 let g:webdevicons_enable_airline_statusline = 1
 let g:webdevicons_enable_startify = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -345,19 +342,6 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_filetype_blacklist = {'tagbar' : 1, 'nerdtree' : 1}
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => rainbow
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rainbow_active = 1
-" rainbow mess up cmake syntax. turn it off
-" https://github.com/luochen1990/rainbow/issues/77
-let g:rainbow_conf = {
-            \   'separately': {
-                \       'cmake': 0,
-                \   }
-                \}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

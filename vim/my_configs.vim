@@ -11,8 +11,8 @@ set autochdir
 let g:go_version_warning = 0
 
 set cursorline
-"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=NONE guifg=NONE
+" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi CursorLine term=bold cterm=bold guibg=Grey40
 
 set gcr=a:block-blinkon0 "禁止光标闪烁。闪烁会干扰视线
 set nocp " nocompatible vim默认兼容vi的按键真是不舒服
@@ -21,7 +21,7 @@ set nocp " nocompatible vim默认兼容vi的按键真是不舒服
 " set mouse=a
 
 " enable Ctrl-C to copy
-set mount=v
+" set mount=v
 
 " enable Ctrl-C to copy selected content to system clipboard
 " set mouse=a使得鼠标选中区域内容时进入visual mode，visual mode下映射ctrl-c为复制到+寄存器
@@ -64,31 +64,6 @@ else
     let g:is_gui=0
 endif
 
-if (g:is_windows)
-    if (g:is_gui)
-        "" 启用win下的快捷键，包括ctrl+c, ctrl+v, shift+insert等
-        "" note: 需要vim8.1或更高版本，才能在PowerShell/cmd中开启的vim中正确显示中文
-        "" 终端(cmd/powershell)里的vim不需要这些快捷键。否则v命令键无法使用。
-        source $VIMRUNTIME/mswin.vim
-        behave mswin
-    endif
-
-
-    "" 
-    set encoding=utf-8
-    set fileencoding=utf-8
-    set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-    set langmenu=zh_CN.UTF-8
-    language message zh_CN.UTF-8
-
-    if (g:is_gui)
-        "" 解决菜单中文乱码
-        "" 需要先设定encoding和fileencoding等
-        source $VIMRUNTIME/delmenu.vim
-        source $VIMRUNTIME/menu.vim
-    endif
-endif
-
 
 " 保存代码文件时删除多余空格
 fun! <SID>StripTrailingWhitespaces()
@@ -109,13 +84,13 @@ function! AutoSetFileHead()
         call setline(1, "#!/bin/bash")
         call append(line("."), "")
     endif
-    
+
     if &filetype == 'python'
         call setline(1, "#!/usr/bin/env python")
-        call append(line("."), "#coding: utf-8")
+        call append(line("."), "# coding: utf-8")
         call append(line(".")+1, "")
     endif
-    
+
     normal G
     normal o
     normal o
@@ -154,4 +129,3 @@ noremap tmi :+tabmove<CR>
 "autocmd TermOpen term://* startinsert
 " 使用 Ctrl + j 召唤出terminal， 就像 VSCode 一样
 noremap <C-j> :terminal<CR>
-
