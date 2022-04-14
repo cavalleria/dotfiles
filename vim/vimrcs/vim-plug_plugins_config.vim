@@ -148,7 +148,7 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enable = 1
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
 let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -167,6 +167,7 @@ let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_splits = 1
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -198,6 +199,10 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.git','__pycache__'],
+            \ 'file': ['~$*','*.o','*.so','*.py[co]']
+            \}
 
 let g:Lf_ShortcutF = "<leader>ff"
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
@@ -243,7 +248,7 @@ let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 "let NERDTreeQuitOnOpen=0
 
 " 从 NERDTree 打开文件后， 不要关掉 NERDTREE 窗口 （但光标是在新开标签页的文件里）
-autocmd BufWinEnter * NERDTreeMirror
+" autocmd BufWinEnter * NERDTreeMirror
 
 " 从 NERDTree 打开文件后， 把光标立即从标签页切换回到 NERDTree 界面
 "autocmd! VimEnter * NERDTree | wincmd w
