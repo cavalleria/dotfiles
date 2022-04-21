@@ -26,6 +26,7 @@ call plug#begin('~/.vim_runtime/plugged')
 " Plug '~/.vim_runtime/sources_forked/set_tabline'
 Plug '~/.vim_runtime/sources_forked/vim-irblack-forked'
 Plug '~/.vim_runtime/sources_forked/vim-peepopen'
+Plug '~/.vim_runtime/sources_forked/gruvbox'
 
 " - github repos
 
@@ -63,11 +64,6 @@ Plug 'junegunn/goyo.vim'
 " YouCompleteMe, for path completion and function/variable/class completions
 " Note: this repo contains a bunch of submodules, time consuming when clone.
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer'  }
-
-" color schemes
-Plug '~/.vim_runtime/sources_forked/peaksea'
-Plug 'morhetz/gruvbox'
-Plug 'tomasiser/vim-code-dark'
 
 " c++ related
 Plug 'rhysd/vim-clang-format'
