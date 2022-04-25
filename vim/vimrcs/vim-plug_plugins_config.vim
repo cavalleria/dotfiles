@@ -139,6 +139,7 @@ let g:ale_set_highlights = 0
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 let g:ale_linters = {'python': ['flake8']}
+let g:ale_python_flake8_options = '--max-line-length=88 --max-complexity=18 --ignore=E402,W503,W504,W292'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
@@ -354,7 +355,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 " [ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-let g:ycm_goto_buffer_command='vertical-split'
+let g:ycm_goto_buffer_command='same-buffer'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 "let g:ycm_rust_src_path = '/usr/local/rustc-1.6.0/src'
 let g:ycm_filetype_blacklist = {'tagbar' : 1, 'nerdtree' : 1}

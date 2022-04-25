@@ -76,27 +76,6 @@ autocmd FileType c,cpp,python,java,go,php,javascript,html,xml,yml autocmd BufWri
 
 
 
-" 新建文件时，自动添加文件头
-" ref: https://github.com/wklken/k-vim
-autocmd BufNewFile *.py,*.sh exec ":call AutoSetFileHead()"
-function! AutoSetFileHead()
-    if &filetype == 'sh'
-        call setline(1, "#!/bin/bash")
-        call append(line("."), "")
-    endif
-
-    if &filetype == 'python'
-        call setline(1, "#!/usr/bin/env python")
-        call append(line("."), "# coding: utf-8")
-        call append(line(".")+1, "")
-    endif
-
-    normal G
-    normal o
-    normal o
-endfunc
-
-
 "\u21A6 is ⇥
 set listchars=eol:$,tab:⇥¬¬,trail:~,extends:>,precedes:<,space:·
 
