@@ -64,10 +64,11 @@ augroup load_leaderf
     autocmd InsertEnter * call plug#load('LeaderF') | autocmd! load_leaderf
 augroup END
 
-
 " count vim startup time
 Plug 'tweekmonster/startuptime.vim'
 
+" Show a diff using Vim its sign column
+Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
@@ -242,3 +243,10 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_filetype_blacklist = {'tagbar' : 1, 'nerdtree' : 1}
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-signify
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" default updatetime 4000ms is not good for async update
+set updatetime=100
