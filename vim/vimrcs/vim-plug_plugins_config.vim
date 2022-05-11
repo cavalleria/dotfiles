@@ -102,7 +102,8 @@ let g:ale_fixers = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-airline plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
+let g:airline_theme='gruvbox8'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
