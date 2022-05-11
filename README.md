@@ -60,17 +60,12 @@ sudo apt-get update
 sudo apt-get install cmake
 ```
 
-- Install **ack**
+- Install **ripgrep**
 ```bash
-sudo apt-get install ack-grep
+sudo apt-get install ripgrep
 ```
 
 ## Useful tools
-
-- **bat**: beautify cat command
-```bash
-dpkg -i bat_0.19.0_amd64.deb
-```
 
 - **cheat**: create and view interactive cheatsheets on the command-line
 
