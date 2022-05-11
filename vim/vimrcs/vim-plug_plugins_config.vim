@@ -1,11 +1,3 @@
-" Adapted from https://github.com/zchrissirhcz/dotfiles/blob/master/dotvim/vimrcs/vim-plug_plugins_config.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Important:
-"       This requries that you install https://github.com/amix/vimrc !
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 """"""""""""""""""""""""""""""
 " => install vim-plug if need
 """"""""""""""""""""""""""""""
@@ -23,93 +15,26 @@ call plug#begin('~/.vim_runtime/plugged')
 
 " Declare the list of plugins
 " - local folder: sources forked
-" Plug '~/.vim_runtime/sources_forked/set_tabline'
-Plug '~/.vim_runtime/sources_forked/vim-irblack-forked'
-Plug '~/.vim_runtime/sources_forked/vim-peepopen'
 Plug '~/.vim_runtime/sources_forked/gruvbox'
-
-" - github repos
-
-" a universal set of defaults that (hopefully) everyone can agree on.
-Plug 'tpope/vim-sensible'
 
 " file explorer by nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 
-" Git wrapper, use :Git add :Git commit :Git diff  in vim
-Plug 'tpope/vim-fugitive'
-
-" A git-lens like plugin
-Plug 'zivyangll/git-blame.vim'
-
-" vim-signify serves as an alternative to vim-gitgutter
-" Run :SignifyDiff for comparison in two columns
-if has('nvim') || has('patch-8.0.902')
-    Plug 'mhinz/vim-signify'
-else
-    Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-endif
-
-" Parentheses related
-Plug 'jiangmiao/auto-pairs'
-
-"A collection of language packs for Vim.
-Plug 'https://gitee.com/mirrors/Polyglot'
-
-" run :Goyo to into Distraction-free writing mode
-Plug 'junegunn/goyo.vim'
 
 " YouCompleteMe, for path completion and function/variable/class completions
 " Note: this repo contains a bunch of submodules, time consuming when clone.
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer'  }
 
-" c++ related
-Plug 'rhysd/vim-clang-format'
-Plug 'octol/vim-cpp-enhanced-highlight'
 
 " mark current line or a region of code as comment
 " Run :commentary to comment current line
 " Use visual mode to select region, then use `gcc` to comment this region
 Plug 'tpope/vim-commentary'
 
-" First in visual mode select code region (multiple lines)
-" Then run :Tab /=
-" It will generate aliged code
-" for example:
-"   one = 1
-"   two = 2
-"   three = 3
-"   four = 4
-" becomes
-"   one   = 1
-"   two   = 2
-"   three = 3
-"   four  = 4
-Plug 'godlygeek/tabular'
-
-" Brings physics-based smooth scrolling to the Vim world!
-Plug 'yuttie/comfortable-motion.vim'
-
-
-" Quickly and easily switch between buffers
-Plug 'corntrace/bufexplorer'
-
-" The Most Recently Used (MRU) plugin
-Plug 'vim-scripts/mru.vim'
-
-" Open file under cursor when pressing gf
-Plug 'amix/open_file_under_cursor.vim'
-
-" Defines a new text object representing lines of code at the same indent level
-Plug 'michaeljsmith/vim-indent-object'
-
 " Multiple selections
 Plug 'terryma/vim-multiple-cursors'
-
-" Markdown preview
-Plug 'preservim/vim-markdown'
 
 " Provides a start screen
 Plug 'mhinz/vim-startify'
@@ -167,26 +92,8 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 0
-" let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => MRU plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -241,20 +148,8 @@ let g:startify_custom_footer = [
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim grep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
-set grepprg=/bin/grep\ -nH
-
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 按 tt 键后， 跳出/隐藏 目录
 map tt :NERDTreeToggle<CR>
 
 " 在 NERDTree 里打开文件，在新的 tab 里显示，而不是覆盖原来的标签页
@@ -326,16 +221,6 @@ let g:multi_cursor_quit_key            = '<Esc>'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Goyo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goyo_width=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
-autocmd! User goyo.vim echom 'Goyo is now loaded!'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe (YCM)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set completeopt=longest,menu
@@ -357,19 +242,6 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " [ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
 let g:ycm_goto_buffer_command='same-buffer'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"let g:ycm_rust_src_path = '/usr/local/rustc-1.6.0/src'
 let g:ycm_filetype_blacklist = {'tagbar' : 1, 'nerdtree' : 1}
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => AutoPairs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:AutoPairsMultilineClose=0
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => git-blame
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>

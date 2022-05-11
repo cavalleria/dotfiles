@@ -32,6 +32,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=500
+set nu
 
 " Enable filetype plugins
 filetype plugin on
@@ -78,9 +79,6 @@ endif
 
 " Always show current position
 set ruler
-
-" Height of the command bar
-set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -208,13 +206,13 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
-map <C-space> ?
+" map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
+" map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
@@ -270,20 +268,7 @@ set laststatus=2
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
-map 0 ^
-
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
+" map 0 ^
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
@@ -295,21 +280,8 @@ fun! CleanExtraSpaces()
 endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre *.txt,*.js,*.py,*c,*h,*cpp,*hpp,*cc,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -364,19 +336,13 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
 
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
 
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+" quick change to normal mode
+inoremap jk <Esc>
 
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
+" highlight cursor line
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
+" quickly open terminal
+noremap <C-j> :terminal<CR>
