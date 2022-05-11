@@ -1,11 +1,11 @@
 """"""""""""""""""""""""""""""
 " => install vim-plug if need
 """"""""""""""""""""""""""""""
-if empty(glob('~/.vim_runtime/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" if empty(glob('~/.vim_runtime/autoload/plug.vim'))
+"     silent !curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs
+"                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 """"""""""""""""""""""""""""""
 " => plugin list
@@ -13,20 +13,23 @@ endif
 " Plugins will be downloaded under the specified directory
 call plug#begin('~/.vim_runtime/plugged')
 
-" Declare the list of plugins
-" - local folder: sources forked
-Plug '~/.vim_runtime/sources_forked/gruvbox'
+" colorscheme
+" Plug 'morhetz/gruvbox'
+" Plug 'sainnhe/gruvbox-material'
+Plug 'lifepillar/vim-gruvbox8'
 
 " file explorer by nerdtree
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 
-
 " YouCompleteMe, for path completion and function/variable/class completions
 " Note: this repo contains a bunch of submodules, time consuming when clone.
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer'  }
-
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer',  'on':[]}
+augroup load_ycm
+    autocmd!
+    autocmd InsertEnter * call plug#load('YouCompleteMe') | autocmd! load_ycm
+augroup END
 
 " mark current line or a region of code as comment
 " Run :commentary to comment current line
@@ -40,15 +43,30 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 
 " Tabline for vim that's light as air.
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline', {'on':[]}
+augroup load_airline
+    autocmd!
+    autocmd InsertEnter * call plug#load('vim-airline') | autocmd! load_airline
+augroup END
 Plug 'vim-airline/vim-airline-themes'
 
 " ale
-Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale', {'on':[]}
+augroup load_ale
+    autocmd!
+    autocmd InsertEnter * call plug#load('ale') | autocmd! load_ale
+augroup END
 
 " fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly.
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension', 'on':[] }
+augroup load_leaderf
+    autocmd!
+    autocmd InsertEnter * call plug#load('LeaderF') | autocmd! load_leaderf
+augroup END
 
+
+" count vim startup time
+Plug 'tweekmonster/startuptime.vim'
 
 
 " List ends here. Remember to call :PlugInstall
@@ -137,38 +155,15 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-startift
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:startify_session_autoload = 1
-let g:startify_custom_footer = [
-            \ '+------------------------------+',
-            \ '|     Keep an open mind!       |',
-            \ '+----------------+-------------+',
-            \]
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map tt :NERDTreeToggle<CR>
-
-" 在 NERDTree 里打开文件，在新的 tab 里显示，而不是覆盖原来的标签页
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
-"let NERDTreeQuitOnOpen=0
-
-" 从 NERDTree 打开文件后， 不要关掉 NERDTREE 窗口 （但光标是在新开标签页的文件里）
-" autocmd BufWinEnter * NERDTreeMirror
-
-" 从 NERDTree 打开文件后， 把光标立即从标签页切换回到 NERDTree 界面
-"autocmd! VimEnter * NERDTree | wincmd w
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
             \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
-
-" " NERDTree: square brackets around icon
-" autocmd VimEnter * source ~/.vimrc
 
 let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
@@ -185,8 +180,9 @@ map <leader>nf :NERDTreeFind<cr>
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_startify = 1
 let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_startify = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_airline_tabline = 1
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
