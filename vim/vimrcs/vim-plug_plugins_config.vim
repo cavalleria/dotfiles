@@ -68,7 +68,12 @@ augroup END
 Plug 'tweekmonster/startuptime.vim'
 
 " Show a diff using Vim its sign column
-Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+" Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
