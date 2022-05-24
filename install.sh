@@ -80,7 +80,17 @@ link_file_list()
 install()
 {
     # install vim plugins
+    if [[ "$(uname)" == "Linux" ]]; then
+        sed -i 's/colorscheme\ gruvbox8/colorscheme\ default/g' ~/.my_config/vim/vimrcs/extended.vim
+    elif [[ "$(uname)"=="Darwin" ]]; then
+        sed -i '' 's/colorscheme\ gruvbox8/colorscheme\ default/g' ~/.my_config/vim/vimrcs/extended.vim
+    fi
     vim +PlugInstall +qall > /dev/null
+    if [[ "$(uname)" == "Linux" ]]; then
+        sed -i 's/colorscheme\ default/colorscheme\ gruvbox8/g' ~/.my_config/vim/vimrcs/extended.vim
+    elif [[ "$(uname)"=="Darwin" ]]; then
+        sed -i '' 's/colorscheme\ default/colorscheme\ gruvbox8/g' ~/.my_config/vim/vimrcs/extended.vim
+    fi
     echo "-- install OK"
 }
 
