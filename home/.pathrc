@@ -40,21 +40,21 @@ unset __conda_setup
 
 #export PATH=$CMAKE:$ANDROID_SDK/platform-tools:$PATH
 if [[ "$(uname)" == "Linux" ]]; then
-    CHEAT_PATH=$HOME/soft/cheat-linux-amd64 
+    CHEAT_PATH=$HOME/soft/cheat
     export PATH=$CHEAT_PATH:$PATH
 elif [[ "$(uname)"=="Darwin" ]]; then
     export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-    CHEAT_PATH=$HOME/soft/cheat-darwin-amd64
+    CHEAT_PATH=$HOME/soft/cheat
     CMAKE_ROOT=$HOME/workspace/3rdlibs/cmake-3.19.1-Darwin-x86_64/CMake.app/Contents/bin
     OPENCV=$HOME/soft/opencv4/opencv/build
     ANDROID_HOME=$HOME/Library/Android/sdk
     JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home
-    
+
     export PATH=$CHEAT_PATH:$CMAKE_ROOT:$OPENCV/include:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
     export PATH=$JAVA_HOME:$PATH
 fi
 
-    
+
 
 #----------
 # => LD_LIBRARY_PATH, LD_PRELOAD
@@ -67,5 +67,3 @@ if [[ "$(uname)" == "Linux" ]]; then
 elif [[ "$(uname)" == "Darwin" ]]; then
     export LD_LIBRARY_PATH=$OPENCV/lib:$LD_LIBRARY_PATH
 fi
-
-

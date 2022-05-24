@@ -40,6 +40,14 @@ git_clone()
     if [ ! -d ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     fi
+    if [ ! -d ~/soft/cheat ]; then
+        sysnm="$(tr [A-Z] [a-z] <<< "$(uname)")"
+        mkdir -p ~/soft/cheat
+        wget -P ~/soft/cheat https://github.com/cheat/cheat/releases/download/4.2.3/cheat-${sysnm}-amd64.gz
+        gzip -d ~/soft/cheat/cheat-${sysnm}-amd64.gz
+        mv ~/soft/cheat/cheat-${sysnm}-amd64 ~/soft/cheat/cheat
+        chmod +x ~/soft/cheat/cheat
+    fi
     if [ ! -d ~/.my_config/home/.config/cheat ]; then
         git clone git@github.com:cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
         pushd ~/.my_config/home/.config/cheat
@@ -70,7 +78,6 @@ link_file_list()
     link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
     link_file  ~/.my_config/home/.gitmessage ~/.gitmessage
     link_file  ~/.my_config/home/.vimrc ~/.vimrc
-    link_file  ~/.my_config/home/.ycm_extra_conf.py ~/.ycm_extra_conf.py
     link_file  ~/.my_config/home/.zshrc ~/.zshrc
     link_file  ~/.my_config/home/.pathrc ~/.pathrc
     link_file  ~/.my_config/home/.condarc ~/.condarc
@@ -80,17 +87,7 @@ link_file_list()
 install()
 {
     # install vim plugins
-    if [[ "$(uname)" == "Linux" ]]; then
-        sed -i 's/colorscheme\ gruvbox8/colorscheme\ default/g' ~/.my_config/vim/vimrcs/extended.vim
-    elif [[ "$(uname)"=="Darwin" ]]; then
-        sed -i '' 's/colorscheme\ gruvbox8/colorscheme\ default/g' ~/.my_config/vim/vimrcs/extended.vim
-    fi
-    vim +PlugInstall +qall > /dev/null
-    if [[ "$(uname)" == "Linux" ]]; then
-        sed -i 's/colorscheme\ default/colorscheme\ gruvbox8/g' ~/.my_config/vim/vimrcs/extended.vim
-    elif [[ "$(uname)"=="Darwin" ]]; then
-        sed -i '' 's/colorscheme\ default/colorscheme\ gruvbox8/g' ~/.my_config/vim/vimrcs/extended.vim
-    fi
+    vim +PlugInstall
     echo "-- install OK"
 }
 

@@ -6,12 +6,12 @@ Before installation, please backup your existing dotfiles first, eg .vimrc, .zsh
 
 via wget:
 ```bash
-sh -c "$(wget https://raw.githubusercontent.com/cavalleria/dotfiles/main/install.sh -O -)"
+bash -c "$(wget https://raw.githubusercontent.com/cavalleria/dotfiles/main/install.sh -O -)"
 ```
 
 via curl:
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/cavalleria/dotfiles/main/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/cavalleria/dotfiles/main/install.sh)"
 ```
 
 ## Requirements
@@ -24,11 +24,6 @@ sudo apt-get install -y zsh
 - Install **Git**
 ```bash
 sudo apt-get install -y git
-```
-
-- Install **ctags**
-```bash
-sudo apt-get install ctags
 ```
 
 - Change default shell
