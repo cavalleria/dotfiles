@@ -33,6 +33,10 @@ filetype indent on
 set autoread
 au FocusGained,BufEnter * checktime
 
+" highlight cursor line
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -115,6 +119,9 @@ endif
 
 " Add a bit extra margin to the left
 set foldcolumn=1
+
+set signcolumn=yes
+set updatetime=300
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -210,6 +217,8 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprevious<CR>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
@@ -270,6 +279,12 @@ if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*c,*h,*cpp,*hpp,*cc,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
+" quick change to normal mode
+inoremap jk <Esc>
+
+" quickly open terminal
+noremap <C-j> :terminal<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -306,17 +321,3 @@ endfunction
 function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
-
-
-" quick change to normal mode
-inoremap jk <Esc>
-
-" highlight cursor line
-set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
-
-" quickly open terminal
-noremap <C-j> :terminal<CR>
-
-set signcolumn=yes
-set updatetime=300

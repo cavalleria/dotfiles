@@ -2,21 +2,44 @@
   "explorer.sources": [
     {
       "name": "buffer",
-      "expand": true
+      "expand": false
     },
     {
       "name": "file",
       "expand": true
     }
   ],
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnTypeFiletypes": ["py", "cpp", "c", "hpp", "h"],
   "explorer.keyMappings.global": {
-    "<space>": "toggleSelection",
-    "L": [
-      "expandable?",
-      ["expanded?", "cd", "expand"],
-      ["collapse", "cd"]
-    ]
+      "i": false,
+      "*": "toggleSelection",
+      "<tab>": "actionMenu",
+      "o": ["wait", "expanded?", "collapse", "expand"],
+      "e": "open",
+      "s": "open:split",
+      "E": "open:vsplit",
+      "t": "open:tab",
+      "ic": "preview:content",
+      "il": "preview:labeling",
+      "Il": "previewOnHover:toggle:labeling",
+      "Ic": "previewOnHover:toggle:content",
+      "II": "previewOnHover:disable",
+      "yp": "copyFilepath",
+      "yn": "copyFilename",
+      "yy": "copyFile",
+      "p": "pasteFile",
+      "a": "addFile",
+      "A": "addDirectory",
+      "r": "rename",
+      "R": "refresh",
+      "f": "search",
+      "F": "searchRecursive"
+
+
+
   },
+  "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.file.showHiddenFiles": true,
   "explorer.buffer.tabOnly": true,

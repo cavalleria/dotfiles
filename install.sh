@@ -61,7 +61,7 @@ git_clone()
 # folders
 link_directory_list()
 {
-    link_directory ~/.my_config/vim ~/.vim_runtime
+    # link_directory ~/.my_config/vim ~/.vim_runtime
 
     link_directory ~/.my_config/oh-my-zsh ~/.oh-my-zsh
 
@@ -87,7 +87,17 @@ link_file_list()
 install()
 {
     # install vim plugins
+    if [[ "$(uname)" == "Linux" ]]; then
+        sed -i 's/colorscheme\ gruvbox8/colorscheme\ default/g' ~/.my_config/vim/vimrcs/my_plugins_config.vim
+    elif [[ "$(uname)"=="Darwin" ]]; then
+        sed -i '' 's/colorscheme\ gruvbox8/colorscheme\ default/g' ~/.my_config/vim/vimrcs/my_plugins_config.vim
+    fi
     vim +PlugInstall
+    if [[ "$(uname)" == "Linux" ]]; then
+        sed -i 's/colorscheme\ default/colorscheme\ gruvbox8/g' ~/.my_config/vim/vimrcs/my_plugins_config.vim
+    elif [[ "$(uname)"=="Darwin" ]]; then
+        sed -i '' 's/colorscheme\ default/colorscheme\ gruvbox8/g' ~/.my_config/vim/vimrcs/my_plugins_config.vim
+    fi
     echo "-- install OK"
 }
 
@@ -95,7 +105,7 @@ hello()
 {
     echo "------------------------------------------"
     echo ""
-    echo "      Welcome to use Cavalleria's Config"
+    echo "   Welcome to use Cavalleria's Config     "
     echo ""
     echo "------------------------------------------"
 }

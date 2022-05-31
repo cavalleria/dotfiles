@@ -7,10 +7,10 @@
 " => plugin list
 """"""""""""""""""""""""""""""
 " Plugins will be downloaded under the specified directory
-call plug#begin('~/.vim_runtime/plugged')
+call plug#begin('~/.my_config/vim/plugged')
 
 " Colorscheme
-Plug 'lifepillar/vim-gruvbox8'
+Plug '~/.my_config/vim/sources_forked/vim-gruvbox8'
 
 " File type icons to Vim plugins
 Plug 'ryanoasis/vim-devicons'
@@ -59,7 +59,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
-
 colorscheme gruvbox8
 
 
@@ -85,10 +84,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 noremap <C-P> :CocList commands<CR>
 nmap tt :CocCommand explorer<CR>
 
-noremap <silent><expr> <TAB>
-      \  umvisible() ? "\<C-n>" :
-      \ CheckBack pace() ? "\<TAB>" :
-      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Use K to show documentation in preview window.
@@ -100,15 +95,13 @@ function! ShowDocumentation()
     call feedkeys('K', 'in')
   endif
 endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " GoTo code navigation.
-nmap <leader> jd <Plug>(coc-definition)
-nmap <leader> jy <Plug>(coc-type-definition)
-nmap <leader> ji <Plug>(coc-implementation)
-nmap <leader> jr <Plug>(coc-references)
+nmap <leader>jd <Plug>(coc-definition)
+nmap <leader>jy <Plug>(coc-type-definition)
+nmap <leader>ji <Plug>(coc-implementation)
+nmap <leader>jr <Plug>(coc-references)
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -163,7 +156,7 @@ let g:ale_fixers = {
 " => Vim-airline plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:airline_theme='solarized'
-let g:airline_theme='gruvbox8'
+" let g:airline_theme='gruvbox8'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
@@ -233,3 +226,9 @@ let g:multi_cursor_next_key            = '<C-s>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-signify
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:signify_vcs_list = ['git']
