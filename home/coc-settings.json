@@ -9,13 +9,14 @@
       "expand": true
     }
   ],
-  "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnTypeFiletypes": ["py", "cpp", "c", "hpp", "h"],
   "explorer.keyMappings.global": {
       "i": false,
+      "<c-o>": "noop",
       "*": "toggleSelection",
       "<tab>": "actionMenu",
       "o": ["wait", "expanded?", "collapse", "expand"],
+      "<cr>": ["wait", "expandable?", "cd", "open"],
+      "<bs>": ["wait", "gotoParent"],
       "e": "open",
       "s": "open:split",
       "E": "open:vsplit",
@@ -34,19 +35,17 @@
       "r": "rename",
       "R": "refresh",
       "f": "search",
-      "F": "searchRecursive"
-
-
-
+      "F": "searchRecursive",
+      "q": "quit"
   },
-  "explorer.width": 30,
+  "explorer.width": 40,
   "explorer.icon.enableNerdfont": true,
   "explorer.file.showHiddenFiles": true,
   "explorer.buffer.tabOnly": true,
   "explorer.file.reveal.whenOpen": false,
   "explorer.file.reveal.filter": {
-    "literals": ["node_modules"]
+      "literals": ["node_modules"]
   },
-  "explorer.mouseMode": "singleclick",
-  "explorer.debug": true
+  "pyright.disableDiagnostics": true,
+  "clangd.disableDiagnostics": true
 }

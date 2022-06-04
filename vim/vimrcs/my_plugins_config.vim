@@ -27,11 +27,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " ale
-Plug 'dense-analysis/ale', {'on':[]}
-augroup load_ale
-    autocmd!
-    autocmd InsertEnter * call plug#load('ale') | autocmd! load_ale
-augroup END
+Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale', {'on':[]}
+" augroup load_ale
+"     autocmd!
+"     autocmd InsertEnter * call plug#load('ale') | autocmd! load_ale
+" augroup END
 
 " fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly.
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension', 'on':[] }
@@ -53,7 +54,8 @@ Plug 'easymotion/vim-easymotion'
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-
+" Terminal
+Plug 'voldikss/vim-floaterm'
 
 
 
@@ -95,35 +97,17 @@ function! ShowDocumentation()
     call feedkeys('K', 'in')
   endif
 endfunction
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+"if vim started with folder
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") |
+            \   exe 'CocCommand explorer' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 " GoTo code navigation.
 nmap <leader>jd <Plug>(coc-definition)
 nmap <leader>jy <Plug>(coc-type-definition)
 nmap <leader>ji <Plug>(coc-implementation)
 nmap <leader>jr <Plug>(coc-references)
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocActionAsync('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -135,7 +119,11 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 let g:ale_linters = {'python': ['flake8']}
 let g:ale_linters_explicit = 1
-let g:ale_python_flake8_options = '--max-line-length=88 --max-complexity=18 --ignore=E402,W503,W504,W292'
+let g:ale_python_flake8_options = '
+            \   --max-line-length=88
+            \   --max-complexity=18
+            \   --ignore=E402,W503,W504,W292
+            \   --per-file-ignores=__init__.py:F401,F403,E402'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
@@ -192,9 +180,9 @@ let g:Lf_WildIgnore = {
             \ 'file': ['~$*','*.o','*.so','*.py[co]']
             \}
 let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>ff :<C-U><C-R>=printf("Leaderf file %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 let g:Lf_RgConfig = [
@@ -232,3 +220,29 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " => vim-signify
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:signify_vcs_list = ['git']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-easymotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_smartcase = 1
+map <Leader><Leader>w <Plug>(easymotion-w)
+map <Leader><Leader>b <Plug>(easymotion-b)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><Leader>f <Plug>(easymotion-f)
+map <Leader><Leader>s <Plug>(easymotion-s)
+map <Leader><leader>. <Plug>(easymotion-repeat)
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-floaterm
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap   <silent>   <F7>    :FloatermNew<CR>
+tnoremap   <silent>   <F7>    <C-\><C-n>:FloatermNew<CR>
+nnoremap   <silent>   <F8>    :FloatermPrev<CR>
+tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermPrev<CR>
+nnoremap   <silent>   <F9>    :FloatermNext<CR>
+tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>

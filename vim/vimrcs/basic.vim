@@ -252,6 +252,12 @@ endtry
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" command line move
+cnoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -281,6 +287,16 @@ endif
 
 " quick change to normal mode
 inoremap jk <Esc>
+
+" map ; to shift+:
+nnoremap ; :
+
+" quick jump to line end
+nnoremap 9 $
+
+" copy to line end
+nnoremap Y y$
+nnoremap vv ^vg_
 
 " quickly open terminal
 noremap <C-j> :terminal<CR>
