@@ -35,18 +35,18 @@ Plug 'dense-analysis/ale'
 " augroup END
 
 " fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly.
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension', 'on':[] }
-augroup load_leaderf
-    autocmd!
-    autocmd InsertEnter * call plug#load('LeaderF') | autocmd! load_leaderf
-augroup END
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension', 'on':[] }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
+" augroup load_leaderf
+"     autocmd!
+"     autocmd InsertEnter * call plug#load('LeaderF') | autocmd! load_leaderf
+" augroup END
 
 " Count vim startup time
 Plug 'tweekmonster/startuptime.vim'
 
 " Show a diff using Vim its sign column
-" Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+Plug 'mhinz/vim-signify'
 
 " Vim motions on speed
 Plug 'easymotion/vim-easymotion'
@@ -57,7 +57,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Terminal
 Plug 'voldikss/vim-floaterm'
 
-
+" snippets
+Plug 'honza/vim-snippets'
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
@@ -78,7 +79,8 @@ let g:coc_global_extensions = [
             \   'coc-yaml',
             \   'coc-json',
             \   'coc-explorer',
-            \   'coc-tabnine'
+            \   'coc-tabnine',
+            \   'coc-snippets'
             \]
 " Use <Tab> and <S-Tab> to navigate the completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -117,13 +119,6 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
-let g:ale_linters = {'python': ['flake8']}
-let g:ale_linters_explicit = 1
-let g:ale_python_flake8_options = '
-            \   --max-line-length=88
-            \   --max-complexity=18
-            \   --ignore=E402,W503,W504,W292
-            \   --per-file-ignores=__init__.py:F401,F403,E402'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
@@ -131,13 +126,29 @@ let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enable = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%][%code%]'
 let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
+let g:ale_c_gcc_options              = '-Wall -Werror -O2 -std=c11'
+let g:ale_c_clang_options            = '-Wall -Werror -O2 -std=c11'
+let g:ale_cpp_gcc_options            = '-Wall -Werror -O2 -std=c++14'
+let g:ale_cpp_clang_options          = '-Wall -Werror -O2 -std=c++14'
+let g:ale_linters = {
+            \   'python': ['flake8'],
+            \   'c': ['cc', 'clangd'],
+            \   'cpp': ['cc', 'clangd']
+            \}
+let g:ale_linters_explicit = 1
+let g:ale_python_flake8_options = '
+            \   --max-line-length=88
+            \   --max-complexity=18
+            \   --ignore=E402,W503,W504,W292
+            \   --per-file-ignores=__init__.py:F401,F403,E402'
+let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4}'
+let g:ale_c_clangformat_use_local_file = 1
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \  'python': [
-                \    'isort',
-                \    'yapf',
-                \   ]
-                \}
+            \  'python': ['isort','yapf'],
+            \  'c': ['clang-format'],
+            \  'cpp': ['clang-format']
+            \}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,3 +257,20 @@ nnoremap   <silent>   <F9>    :FloatermNext<CR>
 tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
 nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Snippets
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'

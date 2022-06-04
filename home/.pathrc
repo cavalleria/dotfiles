@@ -45,7 +45,7 @@ if [[ "$(uname)" == "Linux" ]]; then
 elif [[ "$(uname)"=="Darwin" ]]; then
     export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
     CHEAT_PATH=$HOME/soft/cheat
-    CMAKE_ROOT=$HOME/workspace/3rdlibs/cmake-3.19.1-Darwin-x86_64/CMake.app/Contents/bin
+    CMAKE_ROOT=$HOME/workspace/3rdlibs/cmake-3.23.2-macos-universal/CMake.app/Contents/bin
     OPENCV=$HOME/soft/opencv4/opencv/build
     ANDROID_HOME=$HOME/Library/Android/sdk
     JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home
