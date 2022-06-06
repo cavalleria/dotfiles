@@ -145,7 +145,7 @@ let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4}'
 let g:ale_c_clangformat_use_local_file = 1
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \  'python': ['isort','yapf'],
+            \  'python': ['isort','black'],
             \  'c': ['clang-format'],
             \  'cpp': ['clang-format']
             \}
