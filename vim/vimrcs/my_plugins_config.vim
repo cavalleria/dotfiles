@@ -72,7 +72,6 @@ colorscheme gruvbox8
 let g:coc_config_home = '~/.my_config/home'
 let g:coc_global_extensions = [
             \   'coc-marketplace',
-            \   'coc-git',
             \   'coc-clangd',
             \   'coc-cmake',
             \   'coc-pyright',
@@ -101,9 +100,15 @@ function! ShowDocumentation()
 endfunction
 
 "if vim started with folder
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") |
-            \   exe 'CocCommand explorer' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") |
+"             \   exe 'CocCommand explorer' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+"will open coc-explorer rather than netrw
+augroup MyCocExplorer
+  autocmd!
+  autocmd VimEnter * sil! au! FileExplorer *
+  autocmd BufEnter * let d = expand('%') | if isdirectory(d) | silent! bd | exe 'CocCommand explorer ' . d | endif
+augroup END
 
 " GoTo code navigation.
 nmap <leader>jd <Plug>(coc-definition)
@@ -139,7 +144,7 @@ let g:ale_linters_explicit = 1
 let g:ale_python_flake8_options = '
             \   --max-line-length=88
             \   --max-complexity=18
-            \   --ignore=E402,W503,W504,W292
+            \   --ignore=E402,W503,W504,W292,E203
             \   --per-file-ignores=__init__.py:F401,F403,E402'
 let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4}'
 let g:ale_c_clangformat_use_local_file = 1

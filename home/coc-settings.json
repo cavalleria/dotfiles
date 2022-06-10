@@ -39,8 +39,10 @@
       "q": "quit"
   },
   "explorer.width": 40,
+  "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
   "explorer.icon.enableNerdfont": true,
   "explorer.file.showHiddenFiles": true,
+  "explorer.git.enable": false,
   "explorer.buffer.tabOnly": true,
   "explorer.file.reveal.whenOpen": false,
   "explorer.file.reveal.filter": {
