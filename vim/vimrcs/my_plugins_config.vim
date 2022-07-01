@@ -137,14 +137,14 @@ let g:ale_cpp_gcc_options            = '-Wall -Werror -O2 -std=c++14'
 let g:ale_cpp_clang_options          = '-Wall -Werror -O2 -std=c++14'
 let g:ale_linters = {
             \   'python': ['flake8'],
-            \   'c': ['cc', 'clangd'],
-            \   'cpp': ['cc', 'clangd']
+            \   'c': ['clangd'],
+            \   'cpp': ['clangd']
             \}
 let g:ale_linters_explicit = 1
 let g:ale_python_flake8_options = '
             \   --max-line-length=88
             \   --max-complexity=18
-            \   --ignore=E402,W503,W504,W292,E203
+            \   --ignore=E402,W503,W504,W292,E203,F403,F405
             \   --per-file-ignores=__init__.py:F401,F403,E402'
 let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4}'
 let g:ale_c_clangformat_use_local_file = 1
