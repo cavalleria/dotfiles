@@ -5,10 +5,10 @@
 
 
 echo "Running isort..."
-isort .
+isort -y -sp .
 
-echo "Running yapf..."
-black -r -i .
+echo "Running black..."
+black .
 
 echo "Running flake8..."
 flake8 .
