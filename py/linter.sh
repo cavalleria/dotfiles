@@ -5,7 +5,7 @@
 
 
 echo "Running isort..."
-isort -y -sp .
+isort .
 
 echo "Running black..."
 black .
