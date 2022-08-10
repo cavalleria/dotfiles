@@ -40,6 +40,9 @@ git_clone()
     if [ ! -d ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.my_config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     fi
+    if [ ! -d ~/.my_config/oh-my-zsh/custom/plugins/zsh-z; then
+        git clone https://github.com/agkozak/zsh-z ~/.my_config/oh-my-zsh/custom/plugins/zsh-z
+    fi
     if [ ! -d ~/soft/cheat ]; then
         sysnm="$(tr [A-Z] [a-z] <<< "$(uname)")"
         mkdir -p ~/soft/cheat
