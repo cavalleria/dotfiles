@@ -155,7 +155,7 @@ let g:ale_linters_explicit = 1
 let g:ale_python_flake8_options = '
             \   --max-line-length=88
             \   --max-complexity=18
-            \   --ignore=E402,W503,W504,W292,E203,F403,F405,E166,E741
+            \   --ignore=E402,W503,W504,W292,E203,F403,F405,E166,E741,E731
             \   --per-file-ignores=__init__.py:F401,F403,E402'
 let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4}'
 let g:ale_c_clangformat_use_local_file = 1
@@ -190,7 +190,7 @@ let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
+" let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {
             \ 'File': 1,
@@ -203,7 +203,7 @@ let g:Lf_PreviewResult = {
             \ 'Gtags': 1
             \}
 let g:Lf_WildIgnore = {
-            \ 'dir': ['.git','__pycache__'],
+            \ 'dir': ['.git','__pycache__','build','dist','*egg-info'],
             \ 'file': ['~$*','*.o','*.so','*.py[co]']
             \}
 let g:Lf_ShortcutF = "<leader>ff"
