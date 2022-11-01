@@ -29,6 +29,8 @@ sudo apt-get install -y git
 - Change default shell
 ```bash
 sudo chsh -s /bin/zsh
+or
+sudo usermod -s /usr/bin/zsh $(whoami)
 ```
 
 - Install **Vim 8.2**
