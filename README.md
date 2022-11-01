@@ -60,6 +60,14 @@ sudo apt-get install cmake
 sudo apt-get install ripgrep
 ```
 
+- Install **node**
+```bash
+sudo apt update
+curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+sudo bash /tmp/nodesource_setup.sh
+sudo apt install nodejs
+```
+
 ## Useful tools
 
 - **cheat**: create and view interactive cheatsheets on the command-line
