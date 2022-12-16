@@ -60,6 +60,8 @@ Plug 'voldikss/vim-floaterm'
 " align text
 Plug 'godlygeek/tabular'
 
+" displaying thin vertical lines at each indentation level
+Plug 'Yggdroot/indentLine'
 " List ends here. Remember to call :PlugInstall
 call plug#end()
 colorscheme gruvbox8
