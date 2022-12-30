@@ -62,6 +62,10 @@ Plug 'godlygeek/tabular'
 
 " displaying thin vertical lines at each indentation level
 Plug 'Yggdroot/indentLine'
+
+" copy text to the system clipboard
+Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+
 " List ends here. Remember to call :PlugInstall
 call plug#end()
 colorscheme gruvbox8
@@ -270,3 +274,8 @@ map <Leader><leader>. <Plug>(easymotion-repeat)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-oscyank
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap <leader>c :OSCYank<CR>
