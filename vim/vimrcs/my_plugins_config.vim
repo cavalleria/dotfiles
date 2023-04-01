@@ -278,4 +278,4 @@ tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-oscyank
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap <leader>c :OSCYank<CR>
+vmap <leader>c <Plug>OSCYankVisual
