@@ -43,20 +43,20 @@ git_clone()
     if [ ! -d ~/.my_config/oh-my-zsh/custom/plugins/zsh-z ]; then
         git clone https://github.com/agkozak/zsh-z ~/.my_config/oh-my-zsh/custom/plugins/zsh-z
     fi
-    if [ ! -d ~/soft/cheat ]; then
-        sysnm="$(tr [A-Z] [a-z] <<< "$(uname)")"
-        mkdir -p ~/soft/cheat
-        wget -P ~/soft/cheat https://github.com/cheat/cheat/releases/download/4.2.3/cheat-${sysnm}-amd64.gz
-        gzip -d ~/soft/cheat/cheat-${sysnm}-amd64.gz
-        mv ~/soft/cheat/cheat-${sysnm}-amd64 ~/soft/cheat/cheat
-        chmod +x ~/soft/cheat/cheat
-    fi
-    if [ ! -d ~/.my_config/home/.config/cheat ]; then
-        git clone git@github.com:cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
-        pushd ~/.my_config/home/.config/cheat
-        git submodule update --init
-        popd
-    fi
+    # if [ ! -d ~/soft/cheat ]; then
+    #     sysnm="$(tr [A-Z] [a-z] <<< "$(uname)")"
+    #     mkdir -p ~/soft/cheat
+    #     wget -P ~/soft/cheat https://github.com/cheat/cheat/releases/download/4.2.3/cheat-${sysnm}-amd64.gz
+    #     gzip -d ~/soft/cheat/cheat-${sysnm}-amd64.gz
+    #     mv ~/soft/cheat/cheat-${sysnm}-amd64 ~/soft/cheat/cheat
+    #     chmod +x ~/soft/cheat/cheat
+    # fi
+    # if [ ! -d ~/.my_config/home/.config/cheat ]; then
+    #     git clone git@github.com:cavalleria/my_cheatsheets.git ~/.my_config/home/.config/cheat
+    #     pushd ~/.my_config/home/.config/cheat
+    #     git submodule update --init
+    #     popd
+    # fi
     echo "-- git clone OK"
 }
 
