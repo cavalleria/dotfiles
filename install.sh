@@ -68,10 +68,10 @@ link_directory_list()
 
     link_directory ~/.my_config/oh-my-zsh ~/.oh-my-zsh
 
-    if [ ! -d ~/.config ]; then
-        mkdir -p ~/.config
-    fi
-    link_directory ~/.my_config/home/.config/cheat ~/.config/cheat
+    # if [ ! -d ~/.config ]; then
+    #     mkdir -p ~/.config
+    # fi
+    # link_directory ~/.my_config/home/.config/cheat ~/.config/cheat
     echo "-- link directories OK"
 }
 
