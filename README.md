@@ -21,16 +21,16 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/cavalleria/dotfiles/main
 sudo apt-get install -y zsh
 ```
 
-- Install **Git**
-```bash
-sudo apt-get install -y git
-```
-
 - Change default shell
 ```bash
 sudo chsh -s /bin/zsh
 or
 sudo usermod -s /usr/bin/zsh $(whoami)
+```
+
+- Install **Git**
+```bash
+sudo apt-get install -y git
 ```
 
 - Install **Vim 8.2**
@@ -65,14 +65,14 @@ sudo apt-get install ripgrep
 - Install **node**
 ```bash
 sudo apt update
-curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
-sudo bash /tmp/nodesource_setup.sh
-sudo apt install nodejs
-optional:
-curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install yarn
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo apt policy nodejs
+sudo apt install node[==v21.6.2-1nodesource1]
+
 ```
+
+- vim-nox
+如果是Debian 11系统, 安装vim-nox, sudo apt-get install vim-nox
 
 ## Useful tools
 
