@@ -67,11 +67,12 @@ sudo apt-get install ripgrep
 sudo apt update
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt policy nodejs
-sudo apt install node[==v21.6.2-1nodesource1]
+sudo apt install nodejs[=v21.6.2-1nodesource1]
 
 ```
 
 - vim-nox
+
 如果是Debian 11系统, 安装vim-nox, sudo apt-get install vim-nox
 
 ## Useful tools
