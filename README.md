@@ -67,7 +67,7 @@ sudo apt-get install ripgrep
 sudo apt update
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt policy nodejs
-sudo apt install nodejs[=v21.6.2-1nodesource1]
+sudo apt install nodejs[=21.6.2-1nodesource1]
 
 ```
 
