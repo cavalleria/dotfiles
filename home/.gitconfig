@@ -1,8 +1,6 @@
 [user]
 	name = cavalleria
 	email = 605370459@qq.com
-    #name = yaobin.li
-    #email = yaobin.li@rokid.com
 
 [filter "lfs"]
 	process = git-lfs filter-process
