@@ -66,6 +66,9 @@ Plug 'Yggdroot/indentLine'
 " copy text to the system clipboard
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 
+" git releted
+Plug 'tpope/vim-fugitive'
+
 " List ends here. Remember to call :PlugInstall
 call plug#end()
 colorscheme gruvbox8
