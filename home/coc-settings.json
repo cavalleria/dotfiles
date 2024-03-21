@@ -51,6 +51,7 @@
   "pyright.disableDiagnostics": true,
   "pyright.inlayHints.functionReturnTypes": false,
   "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.parameterTypes": false,
   "clangd.disableDiagnostics": true,
   "snippets.ultisnips.pythonPrompt": false
 }

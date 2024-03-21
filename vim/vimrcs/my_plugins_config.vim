@@ -42,9 +42,6 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
 "     autocmd InsertEnter * call plug#load('LeaderF') | autocmd! load_leaderf
 " augroup END
 
-" Count vim startup time
-Plug 'tweekmonster/startuptime.vim'
-
 " Show a diff using Vim its sign column
 Plug 'mhinz/vim-signify'
 
@@ -166,7 +163,6 @@ let g:ale_python_flake8_options = '
             \   --max-line-length=200
             \   --ignore=E402,W503,W504,W292,E203,F403,F405,E166,E741,E731
             \   --per-file-ignores=__init__.py:F401,F403,E402'
-            " \   --max-complexity=50
 let g:ale_c_clangformat_style_option = '{BasedOnStyle: LLVM, IndentWidth: 4}'
 let g:ale_c_clangformat_use_local_file = 1
 let g:ale_fixers = {
